@@ -185,7 +185,7 @@ ul {
 .hero-poster {
     position: absolute;
     inset: 0;
-    background: url('C:\\Users\\dhawa\\.gemini\\antigravity\\brain\\65ccf6ab-97bd-4131-931e-58033e0ec9d1\\hero_mobile_poster_1771828683137.png') center/cover no-repeat;
+    background: url('hero_mobile_poster.png') center/cover no-repeat;
     z-index: 1;
     display: none;
     opacity: 0.8;
