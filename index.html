@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suryansh Srivastava — Application Security Engineer</title>
+    <meta name="description"
+        content="Portfolio of Suryansh Srivastava — Application Security Engineer specializing in web & mobile security assessments, SAST/DAST, API testing and vulnerability research." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Turret+Road:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP + ScrollTrigger CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Lenis smooth scroll -->
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.58/build/spline-viewer.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <!-- ======== NOISE GRAIN OVERLAY ======== -->
+    <div class="grain-overlay"></div>
+
+    <!-- ======== CURSOR ======== -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursorFollower"></div>
+
+    <!-- ======== NAVIGATION ======== -->
+    <nav class="nav" id="nav">
+        <div class="nav-left">
+            <a href="#home" class="nav-link" data-cursor="link">HOME</a>
+            <a href="#about" class="nav-link" data-cursor="link">ABOUT</a>
+            <a href="#skills" class="nav-link" data-cursor="link">SKILLS</a>
+            <a href="#experience" class="nav-link" data-cursor="link">EXPERIENCE</a>
+            <a href="#projects" class="nav-link" data-cursor="link">PROJECTS</a>
+            <a href="#contact" class="nav-link" data-cursor="link">CONTACT</a>
+        </div>
+        <div class="nav-logo">
+            <a href="https://drive.google.com/file/d/1N9SCJfrmXXJ7iiB5G6p7kwI9tABFFSdR/view?usp=drive_link"
+                target="_blank" class="btn-resume" data-cursor="link">View Resume</a>
+        </div>
+        <div class="nav-right">
+            <a href="mailto:suryanshskill@gmail.com" class="nav-icon" data-cursor="link" title="Email">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                    <path d="M2 7l10 7 10-7" />
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/suryansh-srivastava-746113292" target="_blank" class="nav-icon"
+                data-cursor="link" title="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                </svg>
+            </a>
+            <a href="https://github.com/MatrixEncoder" target="_blank" class="nav-icon" data-cursor="link"
+                title="GitHub">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22" />
+                </svg>
+            </a>
+            <!-- Mobile Toggle -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle Menu">
+                <div class="hamburger">
+                    <span class="line-1"></span>
+                    <span class="line-2"></span>
+                    <span class="line-3"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ======== MOBILE MENU OVERLAY ======== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-inner">
+            <div class="mobile-nav-links">
+                <a href="#home" class="mobile-link">HOME</a>
+                <a href="#about" class="mobile-link">ABOUT</a>
+                <a href="#skills" class="mobile-link">SKILLS</a>
+                <a href="#experience" class="mobile-link">EXPERIENCE</a>
+                <a href="#projects" class="mobile-link">PROJECTS</a>
+                <a href="#contact" class="mobile-link">CONTACT</a>
+            </div>
+            <div class="mobile-menu-footer">
+                <a href="https://drive.google.com/file/d/1N9SCJfrmXXJ7iiB5G6p7kwI9tABFFSdR/view?usp=drive_link"
+                    target="_blank" class="mobile-resume-btn">View Resume</a>
+                <div class="mobile-socials">
+                    <a href="mailto:suryanshskill@gmail.com" class="mobile-social-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <rect x="2" y="4" width="20" height="16" rx="2" />
+                            <path d="M2 7l10 7 10-7" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/suryansh-srivastava-746113292" target="_blank"
+                        class="mobile-social-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                            <rect x="2" y="9" width="4" height="12" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/MatrixEncoder" target="_blank" class="mobile-social-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path
+                                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7a3.37 3.37 0 0 0-.94 2.58V22" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======== MAIN WRAPPER ======== -->
+    <main class="main-wrapper">
+
+        <!-- ============ SECTION 1 : HERO ============ -->
+        <section class="section section-hero" id="home">
+            <spline-viewer url="https://prod.spline.design/6z7sImqbBHdM4483/scene.splinecode"
+                class="hero-spline"></spline-viewer>
+            <!-- Cinematic red background layers -->
+            <div class="hero-bg-deep"></div>
+            <div class="hero-bg-glow"></div>
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+
+            <!-- Centered name overlay -->
+            <div class="hero-center">
+                <h1 class="hero-name">
+                    <span class="name-line" id="heroLine1">SURYANSH</span>
+                    <span class="name-line name-line-2" id="heroLine2">SRIVASTAVA</span>
+                </h1>
+            </div>
+
+            <!-- Bottom center: Learn More -->
+            <a href="#about" class="hero-learn-more" data-cursor="link">
+                <span>Learn More</span>
+                <div class="learn-more-line"></div>
+            </a>
+
+            <!-- Bottom left: tagline -->
+            <div class="hero-tagline">
+                <span class="tagline-line"></span>
+                <span class="tagline-text">Web Security</span>
+                <span class="tagline-dot"></span>
+                <span class="tagline-text">Offensive Security</span>
+                <span class="tagline-dot"></span>
+                <span class="tagline-text">SAST / DAST</span>
+                <span class="tagline-line"></span>
+            </div>
+
+            <!-- Bottom right: scroll hint -->
+            <div class="hero-scroll-hint">
+                <span class="scroll-label">SCROLL</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 2 : ABOUT ============ -->
+        <section class="section section-about" id="about">
+            <div class="section-inner">
+                <div class="section-label reveal-up">
+                    <span class="label-num">01</span>
+                    <span class="label-line"></span>
+                    <span class="label-text">ABOUT</span>
+                </div>
+                <div class="about-grid">
+                    <div class="about-left">
+                        <h2 class="section-heading reveal-up">
+                            Building security<br><em class="red-italic">from the ground up.</em>
+                        </h2>
+                        <p class="about-body reveal-up" data-delay="0.2">
+                            I'm an Application Security student at <strong>MMMUT, Gorakhpur</strong> (B.Tech Computer
+                            Science, 2023–2027), concurrently pursuing a <strong>B.Sc in Data Science from IIT
+                                Madras</strong>. I build production-grade security tools and integrate security into
+                            every layer of the software development lifecycle.
+                        </p>
+                        <p class="about-body reveal-up" data-delay="0.3">
+                            My flagship project <span class="red-text">SPAWN</span> — a real-time web vulnerability
+                            scanner with 33+ detection modules — and <span class="red-text">SHASTRA</span>, a code and
+                            log analysis engine, reflect my passion for automating security at scale.
+                        </p>
+                        <div class="about-contact reveal-up" data-delay="0.4">
+                            <div class="contact-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <rect x="2" y="4" width="20" height="16" rx="2" />
+                                    <path d="M2 7l10 7 10-7" />
+                                </svg>
+                                <a href="mailto:suryanshskill@gmail.com">suryanshskill@gmail.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                <span>Gorakhpur, Uttar Pradesh, India</span>
+                            </div>
+                            <div class="contact-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="1.5">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.27 15a2 2 0 0 1 .65 1.92z" />
+                                </svg>
+                                <span>+91-9125916986</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-right reveal-up" data-delay="0.15">
+                        <div class="about-card glass-card">
+                            <div class="card-accent-bar"></div>
+                            <h3>Education</h3>
+                            <div class="edu-item">
+                                <div class="edu-degree">B.Tech, Computer Science</div>
+                                <div class="edu-school">Madan Mohan Malaviya University of Technology (MMMUT)</div>
+                                <div class="edu-year">2023 – 2027 · Gorakhpur, UP</div>
+                            </div>
+                            <div class="edu-divider"></div>
+                            <div class="edu-item">
+                                <div class="edu-degree">B.Sc (Online), Data Science</div>
+                                <div class="edu-school">Indian Institute of Technology Madras</div>
+                                <div class="edu-year">Expected 2027 · Chennai, TN</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 3 : SKILLS ============ -->
+        <section class="section section-skills" id="skills">
+            <div class="section-inner">
+                <div class="section-label reveal-up">
+                    <span class="label-num">02</span>
+                    <span class="label-line"></span>
+                    <span class="label-text">SKILLS</span>
+                </div>
+                <h2 class="section-heading reveal-up">
+                    Tools &amp; <em class="red-italic">Technologies.</em>
+                </h2>
+
+                <div class="skills-grid">
+                    <div class="skill-category reveal-up" data-delay="0.1">
+                        <div class="skill-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E1381A"
+                                stroke-width="1.5">
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                            </svg>
+                        </div>
+                        <h3 class="skill-cat-title">Programming Languages</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category reveal-up" data-delay="0.2">
+                        <div class="skill-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E1381A"
+                                stroke-width="1.5">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                            </svg>
+                        </div>
+                        <h3 class="skill-cat-title">Security Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Burp Suite</span>
+                            <span class="skill-tag">OWASP ZAP</span>
+                            <span class="skill-tag">Wapiti</span>
+                            <span class="skill-tag">Nmap</span>
+                            <span class="skill-tag">Nikto</span>
+                            <span class="skill-tag">Wireshark</span>
+                            <span class="skill-tag">Splunk</span>
+                            <span class="skill-tag">Semgrep</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category reveal-up" data-delay="0.3">
+                        <div class="skill-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E1381A"
+                                stroke-width="1.5">
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <line x1="8" y1="21" x2="16" y2="21" />
+                                <line x1="12" y1="17" x2="12" y2="21" />
+                            </svg>
+                        </div>
+                        <h3 class="skill-cat-title">Networking &amp; OS</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">TCP/IP</span>
+                            <span class="skill-tag">DNS</span>
+                            <span class="skill-tag">HTTP/HTTPS</span>
+                            <span class="skill-tag">TLS/SSL</span>
+                            <span class="skill-tag">Linux</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category reveal-up" data-delay="0.4">
+                        <div class="skill-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E1381A"
+                                stroke-width="1.5">
+                                <circle cx="11" cy="11" r="8" />
+                                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                            </svg>
+                        </div>
+                        <h3 class="skill-cat-title">Core Security Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">SAST</span>
+                            <span class="skill-tag">DAST</span>
+                            <span class="skill-tag">API Security</span>
+                            <span class="skill-tag">Web Pentesting</span>
+                            <span class="skill-tag">Vulnerability Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 4 : EXPERIENCE ============ -->
+        <section class="section section-experience" id="experience">
+            <div class="section-inner">
+                <div class="section-label reveal-up">
+                    <span class="label-num">03</span>
+                    <span class="label-line"></span>
+                    <span class="label-text">EXPERIENCE</span>
+                </div>
+                <h2 class="section-heading reveal-up">
+                    Where I've <em class="red-italic">made impact.</em>
+                </h2>
+
+                <div class="exp-card glass-card reveal-up" data-delay="0.2">
+                    <div class="card-accent-bar"></div>
+                    <div class="exp-header">
+                        <div>
+                            <h3 class="exp-title">Application Security Engineer Intern</h3>
+                            <div class="exp-company">Eioneus Systems · Pune, India</div>
+                        </div>
+                        <div class="exp-date">May 2025 – Oct 2025</div>
+                    </div>
+                    <ul class="exp-list">
+                        <li>Identified <span class="red-text">25+ security issues</span> across web and mobile
+                            applications, including IDOR, XSS, SSRF, and broken authorization flaws.</li>
+                        <li>Automated Burp Suite and ZAP workflows, reducing manual testing effort by approximately
+                            <span class="red-text">60%</span>.
+                        </li>
+                        <li>Performed security testing on <span class="red-text">50+ API endpoints</span>, assessing
+                            JWT, OAuth2 flows, input validation, and BOLA vulnerabilities.</li>
+                        <li>Delivered remediation guidance and verified fixes to ensure secure deployments post-patch.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 5 : PROJECTS ============ -->
+        <section class="section section-projects" id="projects">
+            <div class="section-inner">
+                <div class="section-label reveal-up">
+                    <span class="label-num">04</span>
+                    <span class="label-line"></span>
+                    <span class="label-text">PROJECTS</span>
+                </div>
+                <h2 class="section-heading reveal-up">
+                    Things I've <em class="red-italic">built.</em>
+                </h2>
+
+                <div class="projects-grid">
+                    <div class="project-card glass-card reveal-up" data-delay="0.1">
+                        <div class="card-accent-bar"></div>
+                        <div class="project-num">01</div>
+                        <h3 class="project-title">SPAWN</h3>
+                        <p class="project-sub">Real-Time Web Vulnerability Scanner</p>
+                        <p class="project-desc">Open-source, Docker-ready web vulnerability scanner with <span
+                                class="red-text">33+ detection modules</span> for authentication flaws, injections, and
+                            misconfigurations. Designed for reproducible deployment and efficient triage.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Docker</span>
+                            <span class="project-tag">DAST</span>
+                        </div>
+                        <a href="https://github.com/MatrixEncoder/SPAWN" class="project-link" data-cursor="link"
+                            target="_blank">
+                            <span>View on GitHub</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="project-card glass-card reveal-up" data-delay="0.2">
+                        <div class="card-accent-bar"></div>
+                        <div class="project-num">02</div>
+                        <h3 class="project-title">SideSOC</h3>
+                        <p class="project-sub">SOC Automation Platform</p>
+                        <p class="project-desc">SOC automation system for log ingestion, threat detection, <span
+                                class="red-text">MITRE ATT&amp;CK mapping</span>, and automated incident reporting to
+                            support analyst workflows.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">MITRE ATT&amp;CK</span>
+                            <span class="project-tag">SIEM</span>
+                        </div>
+                        <a href="https://github.com/MatrixEncoder/SideSOC" class="project-link" data-cursor="link"
+                            target="_blank">
+                            <span>View on GitHub</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12" />
+                                <polyline points="12 5 19 12 12 19" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <div class="project-card glass-card reveal-up" data-delay="0.3">
+                        <div class="card-accent-bar"></div>
+                        <div class="project-num">03</div>
+                        <h3 class="project-title">AI-Powered Network Guardian</h3>
+                        <p class="project-sub">ML-Based Anomaly Detection</p>
+                        <p class="project-desc">ML-based anomaly detection system to identify <span
+                                class="red-text">early indicators of network compromise</span> and assist in alert
+                            triage. Reduces false positive rates significantly.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Network Security</span>
+                        </div>
+                        <div class="project-links-row">
+                            <a href="https://github.com/MatrixEncoder/AI-Network-Guardian" class="project-link"
+                                data-cursor="link" target="_blank">
+                                <span>GitHub</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                            <a href="https://ai-powered-network-guardian.streamlit.app/" class="project-link"
+                                data-cursor="link" target="_blank">
+                                <span>Live Demo</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SECTION 6 : CONTACT ============ -->
+        <section class="section section-contact" id="contact">
+            <div class="section-inner contact-inner">
+                <div class="section-label reveal-up">
+                    <span class="label-num">05</span>
+                    <span class="label-line"></span>
+                    <span class="label-text">CONTACT</span>
+                </div>
+                <h2 class="section-heading contact-heading reveal-up">
+                    Let's work <em class="red-italic">together.</em>
+                </h2>
+                <div class="contact-form-wrapper reveal-up" data-delay="0.2">
+                    <div class="glow-container">
+                        <div class="glow-border"></div>
+                        <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit"
+                            method="POST">
+                            <input type="hidden" name="access_key" value="9b1f2c4d-18ba-43cc-9f8c-cc0461a4f8d2">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" placeholder="John Doe" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="john@example.com" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4"
+                                    placeholder="Tell me about your project..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-send" data-cursor="link">
+                                <span>Send Message</span>
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13" />
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="contact-tagline reveal-up" data-delay="0.4">
+                    Got bugs? I've got the pesticide.
+                </div>
+                <div class="contact-orb"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ======== FOOTER ======== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <span class="footer-name">SURYANSH SRIVASTAVA</span>
+            <span class="footer-copy">© 2025 · Application Security Engineer</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
