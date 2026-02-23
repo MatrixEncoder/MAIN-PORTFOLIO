@@ -294,6 +294,7 @@ if (contactForm) {
 
 // ======== MOBILE MENU LOGIC ========
 const menuToggle = document.getElementById('menuToggle');
+const menuClose = document.getElementById('menuClose');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileLinks = document.querySelectorAll('.mobile-link');
 
@@ -303,10 +304,21 @@ if (menuToggle && mobileMenu) {
     mobileMenu.classList.toggle('active');
   });
 
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
+  if (menuClose) {
+    menuClose.addEventListener('click', () => {
       document.body.classList.remove('menu-open');
       mobileMenu.classList.remove('active');
+    });
+  }
+
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      // Only auto-close the menu if it's an internal # anchor link
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        document.body.classList.remove('menu-open');
+        mobileMenu.classList.remove('active');
+      }
     });
   });
 }
