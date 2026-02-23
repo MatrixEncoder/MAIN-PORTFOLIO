@@ -47,7 +47,10 @@ try {
   // We skip this logic and remove Spline entirely ONLY if it's a touch device in narrow mobile view.
   const splineViewer = document.querySelector('.hero-spline');
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  const isNarrowMobileView = window.innerWidth <= 768;
+
+  // Use matchMedia to perfectly align JS layout logic with the CSS media queries.
+  // This prevents accidental removal when users request "Desktop View" on their phones.
+  const isNarrowMobileView = window.matchMedia('(max-width: 768px)').matches;
 
   if (splineViewer && (!isTouch || !isNarrowMobileView)) {
     // Desktop View, Tablet View, or Desktop PC: Keep Spline, just pause off-screen
@@ -63,8 +66,12 @@ try {
         splineViewer.style.pointerEvents = 'auto';
       }
     });
+
+    // Ensure Spline is visible at JS runtime if it was kept
+    splineViewer.style.display = 'block';
+
   } else if (splineViewer && isTouch && isNarrowMobileView) {
-    // Narrow Mobile View on Phone: Force direct removal/hiding for absolute mobile performance
+    // Narrow Mobile View on Phone: Force direct removal/hiding for absolute performance
     splineViewer.remove();
   }
 
