@@ -174,13 +174,21 @@ ul {
 /* Spline Viewer Styling & Watermark Removal */
 .hero-spline {
     position: absolute;
-    /* Crop technique to hide bottom-right watermark */
     width: calc(100% + 200px);
     height: calc(100% + 200px);
     top: -100px;
     left: -100px;
     z-index: 1;
     pointer-events: auto;
+}
+
+.hero-poster {
+    position: absolute;
+    inset: 0;
+    background: url('C:\\Users\\dhawa\\.gemini\\antigravity\\brain\\65ccf6ab-97bd-4131-931e-58033e0ec9d1\\hero_mobile_poster_1771828683137.png') center/cover no-repeat;
+    z-index: 1;
+    display: none;
+    opacity: 0.8;
 }
 
 .hero-bg-deep {
@@ -1145,9 +1153,26 @@ ul {
         padding: 0 16px;
     }
 
+    .hero-spline {
+        display: none !important;
+    }
+
+    .hero-poster {
+        display: block !important;
+    }
+
     .hero-name {
-        font-size: 8.5vw;
-        line-height: 1.1;
+        font-size: clamp(48px, 16vw, 100px) !important;
+        line-height: 1.0;
+        gap: 10px;
+    }
+
+    .hero-name .line-1 {
+        transform: none !important;
+    }
+
+    .hero-name .line-2 {
+        transform: none !important;
     }
 
     .hero-tagline {
@@ -1207,8 +1232,7 @@ ul {
 
 @media (max-width: 480px) {
     .hero-name {
-        font-size: 10vw;
-        font-size: clamp(32px, 10vw, 48px);
+        font-size: clamp(38px, 15vw, 68px) !important;
     }
 
     .hero-tagline .tagline-text {

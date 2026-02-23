@@ -43,9 +43,12 @@ try {
     .from('.hero-learn-more, .hero-scroll-hint', { opacity: 0, y: 20, duration: 0.8, ease: 'power3.out' }, '-=0.4');
 
   // ---- SPLINE PERFORMANCE OPTIMIZATION ----
-  // Pause/Hide Spline when scrolled past hero to save GPU
+  // Pause/Hide Spline when scrolled past hero to save GPU.
+  // We skip this logic if on a touch device and Spline is already hidden via CSS.
   const splineViewer = document.querySelector('.hero-spline');
-  if (splineViewer) {
+  const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+  if (splineViewer && !isTouch) {
     ScrollTrigger.create({
       trigger: '.section-hero',
       start: 'bottom top',
@@ -58,6 +61,9 @@ try {
         splineViewer.style.pointerEvents = 'auto';
       }
     });
+  } else if (splineViewer && isTouch) {
+    // Force direct removal/hiding for absolute mobile performance
+    splineViewer.remove();
   }
 
   // ---- CONSOLIDATED BATCHED REVEALS (Primary Animation Logic) ----
