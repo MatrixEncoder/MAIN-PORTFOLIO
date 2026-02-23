@@ -191,14 +191,6 @@ ul {
     opacity: 0.8;
 }
 
-body.touch-device .hero-poster {
-    display: block !important;
-}
-
-body.touch-device .hero-spline {
-    display: none !important;
-}
-
 .hero-bg-deep {
     position: absolute;
     inset: 0;

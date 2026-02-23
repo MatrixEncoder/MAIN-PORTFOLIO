@@ -44,11 +44,13 @@ try {
 
   // ---- SPLINE PERFORMANCE OPTIMIZATION ----
   // Pause/Hide Spline when scrolled past hero to save GPU.
-  // We skip this logic if on a touch device and Spline is already hidden via CSS.
+  // We skip this logic and remove Spline entirely ONLY if it's a touch device in narrow mobile view.
   const splineViewer = document.querySelector('.hero-spline');
   const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const isNarrowMobileView = window.innerWidth <= 768;
 
-  if (splineViewer && !isTouch) {
+  if (splineViewer && (!isTouch || !isNarrowMobileView)) {
+    // Desktop View, Tablet View, or Desktop PC: Keep Spline, just pause off-screen
     ScrollTrigger.create({
       trigger: '.section-hero',
       start: 'bottom top',
@@ -61,8 +63,8 @@ try {
         splineViewer.style.pointerEvents = 'auto';
       }
     });
-  } else if (splineViewer && isTouch) {
-    // Force direct removal/hiding for absolute mobile performance
+  } else if (splineViewer && isTouch && isNarrowMobileView) {
+    // Narrow Mobile View on Phone: Force direct removal/hiding for absolute mobile performance
     splineViewer.remove();
   }
 
